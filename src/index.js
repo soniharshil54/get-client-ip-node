@@ -29,11 +29,14 @@ app.get("/healthcheck", async (req, res, next) => {
 
 app.get("/hit", async (req, res, next) => {
   try {
-    const res = await p({
+    const phinResponse = await p({
       'url': 'https://httpbin.org/ip',
       'parse': 'json'
     })
-    const serverIp = res.origin;
+    const apiResponse = phinResponse && phinResponse.body ? phinResponse.body : {
+      message: 'No internet it seems'
+    }
+    const serverIp = apiResponse.origin || apiResponse.message;
     const log = {
       "req.headers['x-forwarded-for']": req.headers['x-forwarded-for'],
       "req.ip": req.ip,
@@ -42,13 +45,13 @@ app.get("/hit", async (req, res, next) => {
     }
     requestLogs.push(log);
     return res.json({
-      data: clientIp,
+      data: log,
       message: 'you hit it',
       note: 'ok'
     })
   } catch (err) {
     console.log('err', err);
-    next({ status: 400, message: "failed to healthcheck" });
+    next({ status: 400, message: "failed to healthcheck", error: err });
   }
 });
 
