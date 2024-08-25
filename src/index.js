@@ -24,7 +24,7 @@ const healthcheck = async (req, res, next) => {
         return res.json({
             userInfo: response,
             message: 'ok',
-            note: 'ok man yo'
+            note: 'ok man yoo'
         });
     } catch (err) {
         console.log('err', err);
