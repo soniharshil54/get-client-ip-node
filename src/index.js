@@ -52,7 +52,7 @@ const hit = async (req, res, next) => {
         requestLogs.push(log);
         return res.json({
             data: log,
-            message: 'you hit it',
+            message: 'you hit it 6:43',
             note: 'ok'
         });
     } catch (err) {
