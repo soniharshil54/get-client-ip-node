@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Trigger rolling restart by updating instance group template
                     sh '''
-                    gcloud compute instance-groups managed rolling-action restart ${INSTANCE_GROUP_NAME} \
+                    gcloud compute instance-groups managed rolling-action recreate ${INSTANCE_GROUP_NAME} \
                     --zone ${ZONE}
                     '''
                 }
