@@ -45,6 +45,7 @@ const hit = async (req, res, next) => {
         const serverIp = apiResponse.origin || apiResponse.message;
         const log = {
             "req.headers['x-forwarded-for']": req.headers['x-forwarded-for'],
+            "req.headers": req.headers,
             "req.ip": req.ip,
             "hitAt": new Date(),
             "serverIp": serverIp,
