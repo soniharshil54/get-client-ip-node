@@ -14,7 +14,7 @@ pipeline {
                     // Trigger rolling restart by updating instance group template
                     sh '''
                     gcloud compute instance-groups managed rolling-action replace ${INSTANCE_GROUP_NAME} \
-                    --region ${REGION}
+                    --region ${REGION} \
                     --max-surge 3 \
                     --max-unavailable 0 \
                     --type proactive
