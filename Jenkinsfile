@@ -15,6 +15,9 @@ pipeline {
                     sh '''
                     gcloud compute instance-groups managed rolling-action replace ${INSTANCE_GROUP_NAME} \
                     --zone ${ZONE}
+                    --max-surge 1 \
+                    --max-unavailable 0 \
+                    --type proactive
                     '''
                 }
             }
