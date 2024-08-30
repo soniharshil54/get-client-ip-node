@@ -16,7 +16,7 @@ pipeline {
                     gcloud compute instance-groups managed rolling-action replace ${INSTANCE_GROUP_NAME} \
                     --region ${REGION} \
                     --max-surge 3 \
-                    --max-unavailable 0 \s
+                    --max-unavailable 0 \
                     '''
                 }
             }
